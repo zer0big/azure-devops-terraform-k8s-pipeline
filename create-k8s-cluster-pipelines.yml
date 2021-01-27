@@ -17,7 +17,7 @@ steps:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
     backendType: 'azurerm'
-    backendServiceArm: 'Microsoft Azure Sponsorship - MVP(1199b626-a317-4559-9289-caba7859ee88)'
+    backendServiceArm: 'Microsoft Azure Sponsorship - MVP'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'backend-rg'
     backendAzureRmResourceGroupLocation: 'koreacentral'
@@ -29,6 +29,6 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
-    environmentServiceName: 'Microsoft Azure Sponsorship - MVP(1199b626-a317-4559-9289-caba7859ee88)'
+    environmentServiceName: 'Microsoft Azure Sponsorship - MVP'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
