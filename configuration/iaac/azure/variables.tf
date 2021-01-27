@@ -3,21 +3,21 @@ variable "client_secret" {}
 variable "ssh_public_key" {}
 
 variable "agent_count" {
-  default = 3
+  default = 1
 }
 
 variable "dns_prefix" {
-  default = "k8s"
+  default = "zerok8s"
 }
 
 variable cluster_name {
-  default = "k8scluster"
+  default = "zeroakscluster-terraform"
 }
 
 variable resource_group_name {
-  default = "k8s-rg"
+  default = "zero-aks-terraform-rg"
 }
 
 variable location {
-  default = "East US"
+  default = "Korea Central"
 }
