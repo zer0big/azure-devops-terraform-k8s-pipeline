@@ -21,7 +21,7 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'backend-rg'
     backendAzureRmResourceGroupLocation: 'koreacentral'
-    backendAzureRmStorageAccountName: 'storageacctnamexm1'
+    backendAzureRmStorageAccountName: 'zerosa4demo'
     backendAzureRmContainerName: 'storageaccntcontainer'
     backendAzureRmKey: 'k8.tfstate'
     allowTelemetryCollection: true
