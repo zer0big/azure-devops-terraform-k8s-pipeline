@@ -17,7 +17,7 @@ steps:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
     backendType: 'azurerm'
-    backendServiceArm: 'Conn4Terraform'
+    backendServiceArm: 'SvcConn4Handson'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'backend-rg'
     backendAzureRmResourceGroupLocation: 'koreacentral'
@@ -25,11 +25,11 @@ steps:
     backendAzureRmContainerName: 'storageaccntcontainer'
     backendAzureRmKey: 'k8s.tfstate'
     allowTelemetryCollection: true
-    
+
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
-    environmentServiceName: 'Conn4Terraform'
+    environmentServiceName: 'SvcConn4Handson'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
