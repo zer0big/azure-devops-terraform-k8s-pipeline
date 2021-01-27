@@ -17,7 +17,7 @@ steps:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
     backendType: 'azurerm'
-    backendServiceArm: 'Microsoft Azure Sponsorship - MVP'
+    backendServiceArm: 'Conn4Terraform'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'backend-rg'
     backendAzureRmResourceGroupLocation: 'koreacentral'
@@ -29,6 +29,6 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
-    environmentServiceName: 'Microsoft Azure Sponsorship - MVP'
+    environmentServiceName: 'Conn4Terraform'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
