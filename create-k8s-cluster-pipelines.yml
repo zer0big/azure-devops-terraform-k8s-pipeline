@@ -23,8 +23,9 @@ steps:
     backendAzureRmResourceGroupLocation: 'koreacentral'
     backendAzureRmStorageAccountName: 'zerosa4demo'
     backendAzureRmContainerName: 'storageaccntcontainer'
-    backendAzureRmKey: 'k8.tfstate'
+    backendAzureRmKey: 'k8s.tfstate'
     allowTelemetryCollection: true
+    
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
