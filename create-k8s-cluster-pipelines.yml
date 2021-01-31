@@ -5,7 +5,7 @@ variables:
   vmImageName: 'ubuntu-latest'
   terraformVersion: 0.14.5
   azureSubscriptionServiceConnectionName: 'SvcConn4Handson'
-  tfStateResourceGroupName: 'terraform-ref-fr-rg'
+  tfStateResourceGroupName: 'terraform-ref-rg'
   tfStateAzureStorageAccountSku: 'Standard_LRS'
   tfStateAzureStorageAccountName: 'zerosa4demo'
   tfStateContainerName: 'storageaccntcontainer'
@@ -26,14 +26,14 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iac/azure'
-    backendType: azurerm
-    backendServiceArm: $(azureSubscriptionServiceConnectionName)
+    backendType: 'azurerm'
+    backendServiceArm: 'SvcConn4Handson'
     ensureBackend: true
-    backendAzureRmResourceGroupLocation: $(location)
-    backendAzureRmResourceGroupName: $(tfStateResourceGroupName)
-    backendAzureRmStorageAccountName: $(tfStateAzureStorageAccountName)
-    backendAzureRmStorageAccountSku: $(tfStateAzureStorageAccountSku)
-    backendAzureRmContainerName: $(tfStateContainerName)
+    backendAzureRmResourceGroupName: '$(tfStateResourceGroupName)'
+    backendAzureRmResourceGroupLocation: '$(location)'
+    backendAzureRmStorageAccountName: '$(tfStateAzureStorageAccountName)'
+    backendAzureRmStorageAccountSku: '$(tfStateAzureStorageAccountSku)'
+    backendAzureRmContainerName: '$(tfStateContainerName)'
     backendAzureRmKey: 'k8s.tfstate'
     allowTelemetryCollection: true
 
