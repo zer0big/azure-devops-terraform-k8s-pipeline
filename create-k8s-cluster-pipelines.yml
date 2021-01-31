@@ -9,7 +9,7 @@ variables:
   tfStateResourceGroupName: 'terraform-ref-rg'
   tfStateAzureStorageAccountSku: 'Standard_LRS'
   tfStateAzureStorageAccountName: 'zerobigtfstate'
-  tfStateContainerName: 'storageaccntcontainer'
+  tfStateContainerName: 'zerobigtfstatecont'
 
 pool:
   vmImage: $(vmImageName)
