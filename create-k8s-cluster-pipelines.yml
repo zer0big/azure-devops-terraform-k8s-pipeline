@@ -1,8 +1,17 @@
 trigger:
-- master
+- none
+
+variables:
+  vmImageName: 'ubuntu-latest'
+  terraformVersion: 0.14.5
+  azureSubscriptionServiceConnectionName: 'SvcConn4Handson'
+  tfStateResourceGroupName: 'terraform-ref-fr-rg'
+  tfStateAzureStorageAccountSku: 'Standard_LRS'
+  tfStateAzureStorageAccountName: 'zerosa4demo'
+  tfStateContainerName: 'storageaccntcontainer'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: $(vmImageName)
 
 steps:
 - script: echo K8S Terraform Azure!
@@ -13,23 +22,31 @@ steps:
     secureFile: 'azure_rsa.pub'
 
 - task: TerraformCLI@0
+  displayName: 'terraform init'
   inputs:
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
-    backendType: 'azurerm'
-    backendServiceArm: 'SvcConn4Handson'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iac/azure'
+    backendType: azurerm
+    backendServiceArm: $(azureSubscriptionServiceConnectionName)
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'backend-rg'
-    backendAzureRmResourceGroupLocation: 'koreacentral'
-    backendAzureRmStorageAccountName: 'zerosa4demo'
-    backendAzureRmContainerName: 'storageaccntcontainer'
+    backendAzureRmResourceGroupLocation: $(location)
+    backendAzureRmResourceGroupName: $(tfStateResourceGroupName)
+    backendAzureRmStorageAccountName: $(tfStateAzureStorageAccountName)
+    backendAzureRmStorageAccountSku: $(tfStateAzureStorageAccountSku)
+    backendAzureRmContainerName: $(tfStateContainerName)
     backendAzureRmKey: 'k8s.tfstate'
     allowTelemetryCollection: true
 
 - task: TerraformCLI@0
+  displayName: 'terraform validate'
+  inputs:
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iac/azure'
+
+- task: TerraformCLI@0
+  displayName: 'terraform apply'
   inputs:
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iac/azure'
     environmentServiceName: 'SvcConn4Handson'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
