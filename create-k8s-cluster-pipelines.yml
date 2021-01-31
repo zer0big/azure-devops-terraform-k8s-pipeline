@@ -3,11 +3,12 @@ trigger:
 
 variables:
   vmImageName: 'ubuntu-latest'
+  location: 'Korea Central'
   terraformVersion: 0.14.5
   azureSubscriptionServiceConnectionName: 'SvcConn4Handson'
   tfStateResourceGroupName: 'terraform-ref-rg'
   tfStateAzureStorageAccountSku: 'Standard_LRS'
-  tfStateAzureStorageAccountName: 'zerosa4demo'
+  tfStateAzureStorageAccountName: 'zerobigtfstate'
   tfStateContainerName: 'storageaccntcontainer'
 
 pool:
