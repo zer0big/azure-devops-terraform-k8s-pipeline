@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: service-deployment
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-api
-        image: kousikm/hello_rest_api
+        image: zeroacrdemo.azurecr.io/hello_rest_api
 ---        
 apiVersion: v1
 kind: Service
