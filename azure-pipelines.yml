@@ -57,7 +57,7 @@ stages:
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
-        kubernetesServiceConnection: 'k8s-service-connection'
+        kubernetesServiceConnection: 'zeroaksdemo'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/k8s/deployment.yaml'
         containers: 'zeroacrdemo.azurecr.io/hello_rest_api:$(tag)'
